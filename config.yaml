@@ -1,4 +1,4 @@
-baseurl: "https://deprode.github.io/esa-blog"
+baseurl: "https://deprode.github.io/esa-blog/"
 langageCode: "ja"
 
 title: "zlog"
@@ -15,7 +15,6 @@ HasCJKLanguage: true
 author:
   name: "deprode"
   homepage: "http://deprode.net"
-  source_repo: "https://github.com/deprode/esa-blog"
 
 permalinks:
   post: "/:year/:month/:day/:filename/"
