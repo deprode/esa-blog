@@ -1,0 +1,163 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.26-DEV" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>php-webdriverを使った画面テスト &middot; zlog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://deprode.github.io/esa-blogcss/poole.css">
+  <link rel="stylesheet" href="https://deprode.github.io/esa-blogcss/syntax.css">
+  <link rel="stylesheet" href="https://deprode.github.io/esa-blogcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="zlog" />
+</head>
+
+	<body class="theme-base-0d ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://deprode.github.io/esa-blog"><h1>zlog</h1></a>
+      <p class="lead">
+       _(┐「ε:)_ 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>php-webdriverを使った画面テスト</h1>
+			  <span class="post-date">Mon, Jan 1, 0001</span>
+			      
+
+<p><a href="https://github.com/facebook/php-webdriver">facebook/php-webdriver: A php client for webdriver.</a></p>
+
+<h2 id="準備">準備</h2>
+
+<p>Macで実行する場合は、Seleniumが必要。
+<code>brew install selenium-server-standalone</code>で入る。</p>
+
+<p>Chromeで実行する場合はChromeDriverが必要。
+<code>brew  install chromedriver</code>で入る。</p>
+
+<h3 id="起動">起動</h3>
+
+<blockquote>
+<p>selenium-server webdriver.chrome.bin=&ldquo;/Applications/Google Chrome.app&rdquo; webdriver.chrome.driver=chromedriver</p>
+</blockquote>
+
+<h2 id="phpunit">PHPUnit</h2>
+
+<p>実行
+&gt; phpunit</p>
+
+<p>テスト名のパターンマッチで実行
+&gt; phpunit &ndash;filter=delete</p>
+
+<p>参考：<a href="http://qiita.com/msysyamamoto/items/0c4dc0f0999a30d86154">PHPUnit で指定したのテストのみを実行する - Qiita</a></p>
+
+<h3 id="操作">操作</h3>
+
+<p>RemoteWebDriverを使っていろいろ操作する。</p>
+
+<h4 id="初期化">初期化</h4>
+
+<pre><code class="language-php">public function setUp()
+{
+    $capabilities = array(WebDriverCapabilityType::BROWSER_NAME =&gt; 'chrome');
+    $this-&gt;webDriver = RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
+}
+
+public function tearDown()
+{
+    $this-&gt;webDriver-&gt;quit();
+}
+</code></pre>
+
+<h3 id="フォーム操作">フォーム操作</h3>
+
+<pre><code class="language-php">$this-&gt;webDriver-&gt;findElement(WebDriverBy::cssSelector('input[name=id]'))-&gt;click();
+$this-&gt;webDriver-&gt;getKeyboard()-&gt;sendKeys('xxxxx');
+$this-&gt;webDriver-&gt;findElement(WebDriverBy::cssSelector('input[name=password]'))-&gt;click();
+$this-&gt;webDriver-&gt;getKeyboard()-&gt;sendKeys('xxxxx');
+$this-&gt;webDriver-&gt;findElement(WebDriverBy::cssSelector('input[type=submit]'))-&gt;click();
+</code></pre>
+
+<p>more info→<a href="https://github.com/facebook/php-webdriver/wiki/Finding-an-element">Finding an element · facebook/php-webdriver Wiki</a></p>
+
+<h3 id="表示を待つ">表示を待つ</h3>
+
+<pre><code class="language-php">$this-&gt;webDriver-&gt;wait(10,500)-&gt;until(
+    WebDriverExpectedCondition::titleIs('Edit post')
+);
+</code></pre>
+
+<p>more info→<a href="https://github.com/facebook/php-webdriver/wiki/HowTo-Wait">HowTo Wait · facebook/php-webdriver Wiki</a></p>
+
+<h3 id="javascriptの実行">JavaScriptの実行</h3>
+
+<pre><code class="language-php">$this-&gt;webDriver-&gt;executeScript(&quot;document.getElementsByTagName('a')[0].click()&quot;);
+</code></pre>
+
+<p>more info→<a href="https://github.com/facebook/php-webdriver/wiki/Example-command-reference#synchronous-script-execution">Example command reference · facebook/php-webdriver Wiki</a></p>
+
+<h3 id="スクリーンショット">スクリーンショット</h3>
+
+<pre><code class="language-php">$this-&gt;webDriver-&gt;takeScreenshot('/path/to/file/hoge.png');
+</code></pre>
+
+<p>more info→<a href="https://github.com/facebook/php-webdriver/wiki/Taking-Full-Screenshot-and-of-an-Element">Taking Full Screenshot and of an Element · facebook/php-webdriver Wiki</a></p>
+
+<h3 id="データ取得">データ取得</h3>
+
+<pre><code class="language-php">// 現在のURL
+$this-&gt;webDriver-&gt;getCurrentURL();
+// タイトル
+$this-&gt;webDriver-&gt;getTitle();
+// 内部のテキストを取得
+$this-&gt;webDriver-&gt;findElement(WebDriverBy::cssSelector('#example'))-&gt;getText();
+// 属性を取得
+$driver-&gt;findElement(WebDriverBy::id('link'))-&gt;getAttribute('title');
+</code></pre>
+
+<h3 id="その他参考資料">その他参考資料</h3>
+
+<p>公式リファレンス：
+<a href="https://github.com/facebook/php-webdriver/wiki">Home · facebook/php-webdriver Wiki</a>
+公式APIリファレンス：
+<a href="http://facebook.github.io/php-webdriver/latest/index.html">Namespaces | php-webdriver API</a></p>
+
+<p>サンプル：
+- <a href="https://github.com/DavertMik/php-webdriver-demo">DavertMik/php-webdriver-demo: Using facebook/php-webdriver library with PHPUnit</a>
+- <a href="http://tech.connehito.com/entry/2015/08/21/152859">PHPでブラウザテストの自動化！ Facebookの作ったツール「php-webdriver」で人生がときめく (サンプルコード付き) - コネヒト開発者ブログ</a>
+- <a href="http://qiita.com/yutaChaos/items/4a1da5d55a3bf0df889e">docker-selenium 使って見た - Qiita</a></p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

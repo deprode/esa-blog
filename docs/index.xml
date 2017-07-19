@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zlog</title>
+    <link>https://deprode.github.io/esa-blog/</link>
+    <description>Recent content on zlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>deprode</copyright>
+    
+	<atom:link href="https://deprode.github.io/esa-blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>php-webdriverを使った画面テスト</title>
+      <link>https://deprode.github.io/esa-blog/217.html/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://deprode.github.io/esa-blog/217.html/</guid>
+      <description>facebook/php-webdriver: A php client for webdriver. 準備 Macで実行する場合は、Seleniumが必要。 brew install selenium-server-standaloneで入る。 Chrome</description>
+    </item>
+    
+  </channel>
+</rss>
