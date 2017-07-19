@@ -14,31 +14,13 @@ jobs:
             - run:
                 name: build hugo
                 command: hugo
-            - save_cache:
-                key: esa-{{ epoch }}
-                paths:
-                    - ~/Document/Github/esa-blog
-    deploy:
-        working_directory: ~/Document/Github/esa-blog
-        machine: true
-        steps:
-            - restore_cache:
-                keys:
-                    -esa
+            - run:
+                name: set git config
+                command: |
+                    git config --global user.email "circleci@example.com"
+                    git config --global user.name "Circle CI"
             - run:
                 command: |
                     git add -A
-                    git commit -m "deploy from deprode [ci skip]"
+                    git commit -m "deploy from ci [ci skip]"
                     git push git@github.com:deprode/esa-blog.git master
-
-workflows:
-  version: 2
-  build_and_deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
