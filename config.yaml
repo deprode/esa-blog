@@ -1,0 +1,18 @@
+# baseurl: "http://log.deprode.net/"
+langageCode: "ja"
+
+title: "log"
+copyright: "deprode"
+
+publishDir: "docs"
+builddrafts: false
+footnotereturnlinkcontents: "↩"
+HasCJKLanguage: true
+
+permalinks:
+  post: "/:year/:month/:day/:filename/"
+  page: "/:title/"
+params:
+  author: "deprode"
+  github: "deprode"
+  twitter: "@deproden"
