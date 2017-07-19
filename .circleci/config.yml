@@ -14,7 +14,6 @@ jobs:
             - run:
                 name: theme install
                 command: |
-                    git submodule add  https://github.com/spf13/hyde.git themes/hyde
                     git submodule sync
                     git submodule update --init --recursive
             - run:
