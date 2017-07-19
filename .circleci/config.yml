@@ -1,0 +1,44 @@
+version: 2
+jobs:
+    build:
+        working_directory: ~/Document/Github/esa-blog
+        machine: true
+        steps:
+            - checkout
+            - run:
+                name: install hugo
+                command: go get -v github.com/gohugoio/hugo
+            - run:
+                name: install pygments
+                command: pip install pygments
+            - run:
+                name: build hugo
+                command: hugo
+            - save_cache:
+                key: esa-{{ epoch }}
+                paths:
+                    - ~/Document/Github/esa-blog
+    deploy:
+        working_directory: ~/Document/Github/esa-blog
+        machine: true
+        steps:
+            - restore_cache:
+                keys:
+                    -esa
+            - run:
+                command: |
+                    git add -A
+                    git commit -m "deploy from deprode [ci skip]"
+                    git push git@github.com:deprode/esa-blog.git master
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
