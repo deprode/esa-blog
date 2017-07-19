@@ -1,18 +1,26 @@
 baseurl: "http://deprode.github.io/esa-blog"
 langageCode: "ja"
 
-title: "log"
+title: "zlog"
 copyright: "deprode"
 
+theme: "hyde"
+
 publishDir: "docs"
+contentdir: "data"
 builddrafts: false
 footnotereturnlinkcontents: "↩"
 HasCJKLanguage: true
 
+author:
+  name: "deprode"
+  homepage: "http://deprode.net"
+  source_repo: "https://github.com/deprode/esa-blog"
+
 permalinks:
   post: "/:year/:month/:day/:filename/"
   page: "/:title/"
+
 params:
-  author: "deprode"
-  github: "deprode"
-  twitter: "@deproden"
+  themeColor: "theme-base-0d"
+  description: "_(┐「ε:)_"
