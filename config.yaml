@@ -4,7 +4,7 @@ langageCode: "ja"
 title: "zlog"
 copyright: "deprode"
 
-theme: "hyde"
+theme: "zlog"
 
 publishDir: "docs"
 contentdir: "data"

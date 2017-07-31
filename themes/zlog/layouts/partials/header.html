@@ -1,0 +1,10 @@
+<header>
+    {{ if .IsPage }}
+    <a href="{{ "/" | relURL }}">Home</a>
+    {{ end }}
+    {{ if .IsHome }}
+    <nav>
+        <a href="https://deprode.net">deprode.net</a>
+    </nav>
+    {{ end }}
+</header>

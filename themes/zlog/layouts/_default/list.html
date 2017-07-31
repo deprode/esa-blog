@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main>
+    <article>
+        <header>
+            <h1>{{.Title}}</h1>
+        </header>
+        {{.Content}}
+    </article>
+    <ul>
+    {{ range (.Data.Pages.ByParam "created_at").Reverse }}
+        {{ if isset .Params "created_at" }}
+        <li>
+            <a href="{{.Permalink}}">{{ dateFormat "2006-01-02" .Params.created_at }} | {{.Title}}</a>
+        </li>
+        {{ end }}
+    {{ end }}
+    </ul>
+</main>
+{{ end }}
