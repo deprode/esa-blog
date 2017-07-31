@@ -1,0 +1,120 @@
+body {
+    font-size: 1.6rem;
+    background: #fcfcfc;
+}
+
+header {
+    margin: 2rem 0 4rem;
+}
+
+footer {
+    margin: 4rem 0 2rem;
+}
+
+:lang(ja) {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Hiragino Kaku Gothic Pro', Meiryo, 'Helvetica', sans-serif;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+pre {
+    word-wrap: break-word;
+    background-color: #f3f3f3;
+}
+
+code {
+    color: #060606;
+    background: #f3f3f3;
+}
+
+pre>code:lang(ja) {
+    font-size: 1.4rem;
+    line-height: 1.7;
+    color: #060606;
+    font-family: monospace;
+    white-space: pre-wrap;
+    background-color: #f3f3f3;
+    padding: 1rem;
+}
+
+ul#tags {
+    line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+
+h1 {
+    margin: 2rem 0 2rem;
+    font-size: 3rem;
+}
+
+h2 {
+    margin: 5rem 0 2rem;
+    font-size: 2.5rem;
+}
+
+h3 {
+    margin: 4rem 0 1.5rem;
+    font-size: 2rem;
+}
+
+h4 {
+    margin: 3rem 0 1.5rem;
+    font-size: 1.8rem;
+}
+
+h5 {
+    font-size: 1.7rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #007B43;
+}
+
+nav {
+    border-bottom: #769164 solid 2px;
+}
+
+nav a:link,
+nav a:visited,
+nav a:hover,
+nav a:active {
+    color: #769164;
+}
+
+.container {
+    max-width: 68rem;
+    line-height: 1.7;
+}
+
+.container p {
+    margin: 1.25rem 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 1.4rem;
+    }
+    pre>code:lang(ja) {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+}
