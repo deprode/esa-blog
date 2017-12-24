@@ -30,14 +30,13 @@
         <article id="content">
            
 
-<h1 id="sqlチートシート">SQLチートシート</h1>
-
 <p><a href="https://dev.mysql.com/doc/refman/5.6/ja/comparison-operators.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 12.3.2 比較関数と演算子</a></p>
 
 <h2 id="データ定義">データ定義</h2>
 
-<p>CREATE TABLE
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/create-table.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.17 CREATE TABLE 構文</a></p>
+<p>CREATE TABLE</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/create-table.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.17 CREATE TABLE 構文</a></p>
 
 <pre><code class="language-sql">CREATE TABLE IF NOT EXISTS  `employees` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -51,14 +50,16 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 </code></pre>
 
-<p>DROP TABLE
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/drop-table.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.28 DROP TABLE 構文</a></p>
+<p>DROP TABLE</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/drop-table.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.28 DROP TABLE 構文</a></p>
 
 <pre><code class="language-sql">DROP TABLE IF EXISTS `employees`;
 </code></pre>
 
-<p>CREATE TRIGGER
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/create-trigger.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.19 CREATE TRIGGER 構文</a></p>
+<p>CREATE TRIGGER</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/create-trigger.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.19 CREATE TRIGGER 構文</a></p>
 
 <pre><code class="language-sql">CREATE TRIGGER
     decrement_employee
@@ -79,8 +80,9 @@ END;
 
 <h2 id="crud-クラッド">CRUD（クラッド）</h2>
 
-<p>INSERT
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/insert.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.5 INSERT 構文</a></p>
+<p>INSERT</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/insert.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.5 INSERT 構文</a></p>
 
 <pre><code class="language-sql">INSERT INTO
     `employees`
@@ -89,8 +91,9 @@ VALUES
     (1, 'Alice', 'Hello World!', 'http://example.com/icon', '2017-12-20', NULL);
 </code></pre>
 
-<p>INSERT INTO 〜  ON DUPLICATE KEY UPDATE
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/insert-on-duplicate.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.5.3 INSERT &hellip; ON DUPLICATE KEY UPDATE 構文</a></p>
+<p>INSERT INTO 〜  ON DUPLICATE KEY UPDATE</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/insert-on-duplicate.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.5.3 INSERT &hellip; ON DUPLICATE KEY UPDATE 構文</a></p>
 
 <pre><code class="language-sql">INSERT INTO
     `employees`
@@ -107,8 +110,9 @@ VALUES
 
 <h3 id="select">SELECT</h3>
 
-<p>SELECT
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/select.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.9 SELECT 構文</a></p>
+<p>SELECT</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/select.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.9 SELECT 構文</a></p>
 
 <pre><code class="language-sql">SELECT  `id` FROM `employees`;
 </code></pre>
@@ -127,15 +131,17 @@ SELECT `name` FROM `employees` WHERE `name` LIKE 'Bob%';
 <pre><code class="language-sql">SELECT `id` FROM `employees` WHERE `id` = 1 ORDER BY `id` DESC;
 </code></pre>
 
-<p>JOIN
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/join.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.9.2 JOIN 構文</a></p>
+<p>JOIN</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/join.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.9.2 JOIN 構文</a></p>
 
 <pre><code class="language-sql">SELECT `name`
     FROM `employees` LEFT JOIN `departments` ON `employees`.`department_id` = `departments`.`id`;
 </code></pre>
 
-<p>COUNT
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/group-by-handling.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 12.19.3 MySQL での GROUP BY の処理</a></p>
+<p>COUNT</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/group-by-handling.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 12.19.3 MySQL での GROUP BY の処理</a></p>
 
 <pre><code class="language-sql">SELECT COUNT(*) FROM `employees`;
 SELECT `department_id`, COUNT(*) FROM `employees` GROUP BY `department_id`;
@@ -143,16 +149,18 @@ SELECT `department_id`, COUNT(*) FROM `employees` GROUP BY `department_id`;
 
 <hr />
 
-<p>UPDATE
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/update.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.11 UPDATE 構文</a></p>
+<p>UPDATE</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/update.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.11 UPDATE 構文</a></p>
 
 <pre><code class="language-sql">UPDATE `employees` SET `updated_at` = NOW();
 
 UPDATE `employees` SET `updated_at` = NOW() WHERE `id` IN(1, 3, 10);
 </code></pre>
 
-<p>DELETE
-<a href="https://dev.mysql.com/doc/refman/5.6/ja/delete.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.2 DELETE 構文</a></p>
+<p>DELETE</p>
+
+<p><a href="https://dev.mysql.com/doc/refman/5.6/ja/delete.html">MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.2.2 DELETE 構文</a></p>
 
 <pre><code class="language-sql"># *全削除
 DELETE FROM `employees`;

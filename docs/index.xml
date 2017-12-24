@@ -16,7 +16,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://deprode.github.io/esa-blog/293.html/</guid>
-      <description>SQLチートシート MySQL :: MySQL 5.6 リファレンスマニュアル :: 12.3.2 比較関数と演算子 データ定義 CREATE TABLE MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.17 CREATE TABLE 構文 CREATE TABLE IF NOT EXISTS `employees` ( `id`</description>
+      <description>MySQL :: MySQL 5.6 リファレンスマニュアル :: 12.3.2 比較関数と演算子 データ定義 CREATE TABLE MySQL :: MySQL 5.6 リファレンスマニュアル :: 13.1.17 CREATE TABLE 構文 CREATE TABLE IF NOT EXISTS `employees` ( `id` int(11) NOT NULL AUTO_INCREMENT, `department_id` int(3) NOT NULL, `name`</description>
     </item>
     
     <item>
